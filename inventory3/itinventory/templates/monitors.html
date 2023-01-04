@@ -17,7 +17,7 @@
     <div class="container" >
         <div class="row">
             <div class="col-12">
-              <h1 class="display-2">PC Verwaltung</h1>
+              <h1 class="display-2">Monitor Verwaltung</h1>
               
               
               <form action="/itinventory/addplatz/addplatzRecord/" method="post">
@@ -26,27 +26,19 @@
                 <table class="table">
                   <tr>
                     <th>bearbeiten</th>
-                    <th>Modell</th>
-                    <th>RAM</th>
-                    <th>CPU</th>
-                    <th>AnzahlKerne</th>
-                    <th>Festplatte</th>
+                    <th>Schnittstelle</th>
                     <th>Seriennummer</th>
-                    <th>Bemerkung</th>
                     <th>Status</th>
+                    <th>Bemerkung</th>
                     <th>löschen</th>
                   </tr>
-                  {% for x in mypcs %}
+                  {% for x in myMonitors %}
                   <tr>
-                    <td><a href="/itinventory/updatePC/{{ x.id }}" class="btn btn-primary">bearbeiten</a></td>
-                    <td>{{ x.modell }}</td>
-                    <td>{{ x.RAM }}</td>
-                    <td>{{ x.CPU }}</td>
-                    <td>{{ x.anzahlkerne }}</td>
-                    <td>{{ x.festplatte }}</td>
+                    <td><a href="/itinventory/updateMonitor/{{ x.id }}" class="btn btn-primary">bearbeiten</a></td>
+                    <td>{{ x.schnittstelle }}</td>
                     <td>{{ x.serialnummer }}</td>
-                    <td>{{ x.bemaerkung }}</td>
                     <td>{{ x.status }}</td>
+                    <td>{{ x.bemaerkung }}</td>
                     <td>
                       <!-- modal -->
                       <!-- Button trigger modal -->
@@ -68,7 +60,7 @@
                             <div class="modal-footer">
                               <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Nein</button>
                               <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
-                              <a href="/itinventory/delPCRecord/{{ x.id }}" class="btn btn-danger">Löschen</a>
+                              <a href="/itinventory/delMONITORRecord/{{ x.id }}" class="btn btn-danger">Löschen</a>
                             </div>
                           </div>
                         </div>
@@ -80,7 +72,7 @@
                 </table>
               </div>
               
-                <a href="/itinventory/addpc/" class="btn btn-primary">PC hinzufügen</a>
+                <a href="/itinventory/addMONITOR/" class="btn btn-primary">Monitor hinzufügen</a>
                 <a href="/itinventory/" class="btn btn-secondary">Zurück</a>
               
               </form>

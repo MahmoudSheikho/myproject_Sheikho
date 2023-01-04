@@ -17,8 +17,11 @@ urlpatterns = [
 
     path('updatePlatz/<int:id>', views.updatePlatz, name='updatePlatz'),
     path('updatePlatz/updatePlatzRecord/<int:id>',views.updatePlatzRecord, name='updatePlatzRecord'),
-    
+
+    #update PC Data
     path('updatePC/<int:id>', views.updatePC, name='updatePC'),
+    path('updatePC/updatePCRecord/<int:id_pc>', views.updatePCRecord, name='updatePCRecord'),
+
     path('updatePlatzPC/<int:id>', views.updatePlatzPC, name='updatePlatzPC'),
     path('updatePlatzPC/updatePlatzPCRecord/<int:id>',views.updatePlatzPCRecord, name='updatePlatzPCRecord'),
 
@@ -43,13 +46,27 @@ urlpatterns = [
     path('updatePc/updatePcRecord/<int:id_pc>/<int:id_room>',views.updatePcRecord, name='updatePcRecord'),
     path('delPc/<int:id>', views.delPc, name='delPc'),
     path('delPc/delPcRecord/<int:id>', views.delPcRecord, name='delPcRecord'),
-    path('addmonitor/<int:id>', views.addmonitor, name='addmonitor'),
-    path('addmonitor/addMonitorRecord/<int:id>',views.addMonitorRecord, name='addMonitorRecord'),
+    # del PC Record directly
+    path('delPCRecord/<int:id>', views.delPCRecord, name='delPCRecord'),
+
+
+    # Monitors
+    path('monitors/', views.monitors, name='monitors'),
     path('monitor/', views.monitorview, name='monitor'),
+
+    path('addMONITOR/', views.addMONITOR, name='addMONITOR'),
+    path('addmonitor/addMONITORRecord/',views.addMONITORRecord, name='addMONITORRecord'),
+
+
+    path('addmonitor/<int:id>', views.addmonitor, name='addmonitor'),
+
+    path('addmonitor/addMonitorRecord/<int:id>',views.addMonitorRecord, name='addMonitorRecord'),
     path('monitorviewFilter/<int:id>',views.monitorviewFilter, name='monitorviewFilter'),
     path('updateMonitor/<int:id>/<int:id_room>/', views.updateMonitor, name='updateMonitor'),
     path('updateMonitor/updateMonitorRecord/<int:id>/<int:id_room>/',views.updateMonitorRecord, name='updateMonitorRecord'),
     path('delmonitor/<int:id>', views.delmonitor, name='delmonitor'),
+    path('delMONITORRecord/<int:id>', views.delMONITORRecord, name='delMONITORRecord'),
+    
     path('delmonitor/delMonitorRecord/<int:id>',views.delMonitorRecord, name='delMonitorRecord'),
 
 
