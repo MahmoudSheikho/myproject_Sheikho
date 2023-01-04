@@ -1,0 +1,510 @@
+source /home/pbraun/_dev/myproject_Sheikho/.inventory3Venv/bin/activate
+pbraun@ubuntu2004-pab:~/_dev/myproject_Sheikho$ source /home/pbraun/_dev/myproject_Sheikho/.inventory3Venv/bin/activate
+(.inventory3Venv) pbraun@ubuntu2004-pab:~/_dev/myproject_Sheikho$ cd inventory3/
+(.inventory3Venv) pbraun@ubuntu2004-pab:~/_dev/myproject_Sheikho/inventory3$ python manage.py shell
+Python 3.8.10 (default, Nov 14 2022, 12:59:47) 
+[GCC 9.4.0] on linux
+Type "help", "copyright", "credits" or "license" for more information.
+(InteractiveConsole)
+>>> from itinventory.models import *
+>>> myPlatz = Platz(bezeichnung='Platz1', room_id='1')
+>>> myPlatz.save()
+Traceback (most recent call last):
+  File "/home/pbraun/_dev/myproject_Sheikho/.inventory3Venv/lib/python3.8/site-packages/django/db/backends/utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+  File "/home/pbraun/_dev/myproject_Sheikho/.inventory3Venv/lib/python3.8/site-packages/django/db/backends/sqlite3/base.py", line 357, in execute
+    return Database.Cursor.execute(self, query, params)
+sqlite3.IntegrityError: FOREIGN KEY constraint failed
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+  File "/home/pbraun/_dev/myproject_Sheikho/.inventory3Venv/lib/python3.8/site-packages/django/db/models/base.py", line 812, in save
+    self.save_base(
+  File "/home/pbraun/_dev/myproject_Sheikho/.inventory3Venv/lib/python3.8/site-packages/django/db/models/base.py", line 863, in save_base
+    updated = self._save_table(
+  File "/home/pbraun/_dev/myproject_Sheikho/.inventory3Venv/lib/python3.8/site-packages/django/db/models/base.py", line 1006, in _save_table
+    results = self._do_insert(
+  File "/home/pbraun/_dev/myproject_Sheikho/.inventory3Venv/lib/python3.8/site-packages/django/db/models/base.py", line 1047, in _do_insert
+    return manager._insert(
+  File "/home/pbraun/_dev/myproject_Sheikho/.inventory3Venv/lib/python3.8/site-packages/django/db/models/manager.py", line 85, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/home/pbraun/_dev/myproject_Sheikho/.inventory3Venv/lib/python3.8/site-packages/django/db/models/query.py", line 1791, in _insert
+    return query.get_compiler(using=using).execute_sql(returning_fields)
+  File "/home/pbraun/_dev/myproject_Sheikho/.inventory3Venv/lib/python3.8/site-packages/django/db/models/sql/compiler.py", line 1660, in execute_sql
+    cursor.execute(sql, params)
+  File "/home/pbraun/_dev/myproject_Sheikho/.inventory3Venv/lib/python3.8/site-packages/django/db/backends/utils.py", line 103, in execute
+    return super().execute(sql, params)
+  File "/home/pbraun/_dev/myproject_Sheikho/.inventory3Venv/lib/python3.8/site-packages/django/db/backends/utils.py", line 67, in execute
+    return self._execute_with_wrappers(
+  File "/home/pbraun/_dev/myproject_Sheikho/.inventory3Venv/lib/python3.8/site-packages/django/db/backends/utils.py", line 80, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "/home/pbraun/_dev/myproject_Sheikho/.inventory3Venv/lib/python3.8/site-packages/django/db/backends/utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+  File "/home/pbraun/_dev/myproject_Sheikho/.inventory3Venv/lib/python3.8/site-packages/django/db/utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "/home/pbraun/_dev/myproject_Sheikho/.inventory3Venv/lib/python3.8/site-packages/django/db/backends/utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+  File "/home/pbraun/_dev/myproject_Sheikho/.inventory3Venv/lib/python3.8/site-packages/django/db/backends/sqlite3/base.py", line 357, in execute
+    return Database.Cursor.execute(self, query, params)
+django.db.utils.IntegrityError: FOREIGN KEY constraint failed
+>>> myPlatz = Platz.objects.get(pc_id=1)
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+  File "/home/pbraun/_dev/myproject_Sheikho/.inventory3Venv/lib/python3.8/site-packages/django/db/models/manager.py", line 85, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/home/pbraun/_dev/myproject_Sheikho/.inventory3Venv/lib/python3.8/site-packages/django/db/models/query.py", line 653, in get
+    raise self.model.MultipleObjectsReturned(
+itinventory.models.Platz.MultipleObjectsReturned: get() returned more than one Platz -- it returned 3!
+>>> myPlatz = rooms.objects.filter(pc_id=None)
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+NameError: name 'rooms' is not defined
+>>> from itinventory.models import *
+>>> myPlatz = rooms.objects.filter(pc_id=None)
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+NameError: name 'rooms' is not defined
+>>> myPlatz = room.objects.filter(pc_id=None)
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+NameError: name 'room' is not defined
+>>> myPlatz = Rooms.objects.filter(pc_id=None)
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+  File "/home/pbraun/_dev/myproject_Sheikho/.inventory3Venv/lib/python3.8/site-packages/django/db/models/manager.py", line 85, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/home/pbraun/_dev/myproject_Sheikho/.inventory3Venv/lib/python3.8/site-packages/django/db/models/query.py", line 1421, in filter
+    return self._filter_or_exclude(False, args, kwargs)
+  File "/home/pbraun/_dev/myproject_Sheikho/.inventory3Venv/lib/python3.8/site-packages/django/db/models/query.py", line 1439, in _filter_or_exclude
+    clone._filter_or_exclude_inplace(negate, args, kwargs)
+  File "/home/pbraun/_dev/myproject_Sheikho/.inventory3Venv/lib/python3.8/site-packages/django/db/models/query.py", line 1446, in _filter_or_exclude_inplace
+    self._query.add_q(Q(*args, **kwargs))
+  File "/home/pbraun/_dev/myproject_Sheikho/.inventory3Venv/lib/python3.8/site-packages/django/db/models/sql/query.py", line 1532, in add_q
+    clause, _ = self._add_q(q_object, self.used_aliases)
+  File "/home/pbraun/_dev/myproject_Sheikho/.inventory3Venv/lib/python3.8/site-packages/django/db/models/sql/query.py", line 1562, in _add_q
+    child_clause, needed_inner = self.build_filter(
+  File "/home/pbraun/_dev/myproject_Sheikho/.inventory3Venv/lib/python3.8/site-packages/django/db/models/sql/query.py", line 1407, in build_filter
+    lookups, parts, reffed_expression = self.solve_lookup_type(arg)
+  File "/home/pbraun/_dev/myproject_Sheikho/.inventory3Venv/lib/python3.8/site-packages/django/db/models/sql/query.py", line 1217, in solve_lookup_type
+    _, field, _, lookup_parts = self.names_to_path(lookup_splitted, self.get_meta())
+  File "/home/pbraun/_dev/myproject_Sheikho/.inventory3Venv/lib/python3.8/site-packages/django/db/models/sql/query.py", line 1709, in names_to_path
+    raise FieldError(
+django.core.exceptions.FieldError: Cannot resolve keyword 'pc_id' into field. Choices are: anzahlplaetze, id, platz, roomname
+>>> myPlatz = Platz.objects.filter(pc_id=None)
+>>> myPlatz
+<QuerySet []>
+>>> myPlatz = Platz.objects.filter(pc_id=Null)
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+NameError: name 'Null' is not defined
+>>> myPlatz = Platz.objects.filter(pc_id='Null')
+Traceback (most recent call last):
+  File "/home/pbraun/_dev/myproject_Sheikho/.inventory3Venv/lib/python3.8/site-packages/django/db/models/fields/__init__.py", line 2018, in get_prep_value
+    return int(value)
+ValueError: invalid literal for int() with base 10: 'Null'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+  File "/home/pbraun/_dev/myproject_Sheikho/.inventory3Venv/lib/python3.8/site-packages/django/db/models/manager.py", line 85, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/home/pbraun/_dev/myproject_Sheikho/.inventory3Venv/lib/python3.8/site-packages/django/db/models/query.py", line 1421, in filter
+    return self._filter_or_exclude(False, args, kwargs)
+  File "/home/pbraun/_dev/myproject_Sheikho/.inventory3Venv/lib/python3.8/site-packages/django/db/models/query.py", line 1439, in _filter_or_exclude
+    clone._filter_or_exclude_inplace(negate, args, kwargs)
+  File "/home/pbraun/_dev/myproject_Sheikho/.inventory3Venv/lib/python3.8/site-packages/django/db/models/query.py", line 1446, in _filter_or_exclude_inplace
+    self._query.add_q(Q(*args, **kwargs))
+  File "/home/pbraun/_dev/myproject_Sheikho/.inventory3Venv/lib/python3.8/site-packages/django/db/models/sql/query.py", line 1532, in add_q
+    clause, _ = self._add_q(q_object, self.used_aliases)
+  File "/home/pbraun/_dev/myproject_Sheikho/.inventory3Venv/lib/python3.8/site-packages/django/db/models/sql/query.py", line 1562, in _add_q
+    child_clause, needed_inner = self.build_filter(
+  File "/home/pbraun/_dev/myproject_Sheikho/.inventory3Venv/lib/python3.8/site-packages/django/db/models/sql/query.py", line 1478, in build_filter
+    condition = self.build_lookup(lookups, col, value)
+  File "/home/pbraun/_dev/myproject_Sheikho/.inventory3Venv/lib/python3.8/site-packages/django/db/models/sql/query.py", line 1303, in build_lookup
+    lookup = lookup_class(lhs, rhs)
+  File "/home/pbraun/_dev/myproject_Sheikho/.inventory3Venv/lib/python3.8/site-packages/django/db/models/lookups.py", line 27, in __init__
+    self.rhs = self.get_prep_lookup()
+  File "/home/pbraun/_dev/myproject_Sheikho/.inventory3Venv/lib/python3.8/site-packages/django/db/models/fields/related_lookups.py", line 166, in get_prep_lookup
+    self.rhs = target_field.get_prep_value(self.rhs)
+  File "/home/pbraun/_dev/myproject_Sheikho/.inventory3Venv/lib/python3.8/site-packages/django/db/models/fields/__init__.py", line 2020, in get_prep_value
+    raise e.__class__(
+ValueError: Field 'id' expected a number but got 'Null'.
+>>> myPlatz = Platz.objects.filter(pc_id__is_null=True)
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+  File "/home/pbraun/_dev/myproject_Sheikho/.inventory3Venv/lib/python3.8/site-packages/django/db/models/manager.py", line 85, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/home/pbraun/_dev/myproject_Sheikho/.inventory3Venv/lib/python3.8/site-packages/django/db/models/query.py", line 1421, in filter
+    return self._filter_or_exclude(False, args, kwargs)
+  File "/home/pbraun/_dev/myproject_Sheikho/.inventory3Venv/lib/python3.8/site-packages/django/db/models/query.py", line 1439, in _filter_or_exclude
+    clone._filter_or_exclude_inplace(negate, args, kwargs)
+  File "/home/pbraun/_dev/myproject_Sheikho/.inventory3Venv/lib/python3.8/site-packages/django/db/models/query.py", line 1446, in _filter_or_exclude_inplace
+    self._query.add_q(Q(*args, **kwargs))
+  File "/home/pbraun/_dev/myproject_Sheikho/.inventory3Venv/lib/python3.8/site-packages/django/db/models/sql/query.py", line 1532, in add_q
+    clause, _ = self._add_q(q_object, self.used_aliases)
+  File "/home/pbraun/_dev/myproject_Sheikho/.inventory3Venv/lib/python3.8/site-packages/django/db/models/sql/query.py", line 1562, in _add_q
+    child_clause, needed_inner = self.build_filter(
+  File "/home/pbraun/_dev/myproject_Sheikho/.inventory3Venv/lib/python3.8/site-packages/django/db/models/sql/query.py", line 1478, in build_filter
+    condition = self.build_lookup(lookups, col, value)
+  File "/home/pbraun/_dev/myproject_Sheikho/.inventory3Venv/lib/python3.8/site-packages/django/db/models/sql/query.py", line 1292, in build_lookup
+    raise FieldError(
+django.core.exceptions.FieldError: Related Field got invalid lookup: is_null
+>>> myPlatz = Platz.objects.filter(pc_id__isnull=True)
+>>> myPlatz
+<QuerySet []>
+>>> exit()
+(.inventory3Venv) pbraun@ubuntu2004-pab:~/_dev/myproject_Sheikho/inventory3$ python manage.py shell
+Python 3.8.10 (default, Nov 14 2022, 12:59:47) 
+[GCC 9.4.0] on linux
+Type "help", "copyright", "credits" or "license" for more information.
+(InteractiveConsole)
+>>> from itinventory.models import *
+>>> myPlatz = Platz.objects.filter(pc_id__isnull=True)
+>>> myPlatz
+<QuerySet []>
+>>> myPlatz = Platz.objects.filter(pc_id='')
+Traceback (most recent call last):
+  File "/home/pbraun/_dev/myproject_Sheikho/.inventory3Venv/lib/python3.8/site-packages/django/db/models/fields/__init__.py", line 2018, in get_prep_value
+    return int(value)
+ValueError: invalid literal for int() with base 10: ''
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+  File "/home/pbraun/_dev/myproject_Sheikho/.inventory3Venv/lib/python3.8/site-packages/django/db/models/manager.py", line 85, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/home/pbraun/_dev/myproject_Sheikho/.inventory3Venv/lib/python3.8/site-packages/django/db/models/query.py", line 1421, in filter
+    return self._filter_or_exclude(False, args, kwargs)
+  File "/home/pbraun/_dev/myproject_Sheikho/.inventory3Venv/lib/python3.8/site-packages/django/db/models/query.py", line 1439, in _filter_or_exclude
+    clone._filter_or_exclude_inplace(negate, args, kwargs)
+  File "/home/pbraun/_dev/myproject_Sheikho/.inventory3Venv/lib/python3.8/site-packages/django/db/models/query.py", line 1446, in _filter_or_exclude_inplace
+    self._query.add_q(Q(*args, **kwargs))
+  File "/home/pbraun/_dev/myproject_Sheikho/.inventory3Venv/lib/python3.8/site-packages/django/db/models/sql/query.py", line 1532, in add_q
+    clause, _ = self._add_q(q_object, self.used_aliases)
+  File "/home/pbraun/_dev/myproject_Sheikho/.inventory3Venv/lib/python3.8/site-packages/django/db/models/sql/query.py", line 1562, in _add_q
+    child_clause, needed_inner = self.build_filter(
+  File "/home/pbraun/_dev/myproject_Sheikho/.inventory3Venv/lib/python3.8/site-packages/django/db/models/sql/query.py", line 1478, in build_filter
+    condition = self.build_lookup(lookups, col, value)
+  File "/home/pbraun/_dev/myproject_Sheikho/.inventory3Venv/lib/python3.8/site-packages/django/db/models/sql/query.py", line 1303, in build_lookup
+    lookup = lookup_class(lhs, rhs)
+  File "/home/pbraun/_dev/myproject_Sheikho/.inventory3Venv/lib/python3.8/site-packages/django/db/models/lookups.py", line 27, in __init__
+    self.rhs = self.get_prep_lookup()
+  File "/home/pbraun/_dev/myproject_Sheikho/.inventory3Venv/lib/python3.8/site-packages/django/db/models/fields/related_lookups.py", line 166, in get_prep_lookup
+    self.rhs = target_field.get_prep_value(self.rhs)
+  File "/home/pbraun/_dev/myproject_Sheikho/.inventory3Venv/lib/python3.8/site-packages/django/db/models/fields/__init__.py", line 2020, in get_prep_value
+    raise e.__class__(
+ValueError: Field 'id' expected a number but got ''.
+>>> myPlatz = Platz.objects.filter(pc_id=' ')
+Traceback (most recent call last):
+  File "/home/pbraun/_dev/myproject_Sheikho/.inventory3Venv/lib/python3.8/site-packages/django/db/models/fields/__init__.py", line 2018, in get_prep_value
+    return int(value)
+ValueError: invalid literal for int() with base 10: ' '
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+  File "/home/pbraun/_dev/myproject_Sheikho/.inventory3Venv/lib/python3.8/site-packages/django/db/models/manager.py", line 85, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/home/pbraun/_dev/myproject_Sheikho/.inventory3Venv/lib/python3.8/site-packages/django/db/models/query.py", line 1421, in filter
+    return self._filter_or_exclude(False, args, kwargs)
+  File "/home/pbraun/_dev/myproject_Sheikho/.inventory3Venv/lib/python3.8/site-packages/django/db/models/query.py", line 1439, in _filter_or_exclude
+    clone._filter_or_exclude_inplace(negate, args, kwargs)
+  File "/home/pbraun/_dev/myproject_Sheikho/.inventory3Venv/lib/python3.8/site-packages/django/db/models/query.py", line 1446, in _filter_or_exclude_inplace
+    self._query.add_q(Q(*args, **kwargs))
+  File "/home/pbraun/_dev/myproject_Sheikho/.inventory3Venv/lib/python3.8/site-packages/django/db/models/sql/query.py", line 1532, in add_q
+    clause, _ = self._add_q(q_object, self.used_aliases)
+  File "/home/pbraun/_dev/myproject_Sheikho/.inventory3Venv/lib/python3.8/site-packages/django/db/models/sql/query.py", line 1562, in _add_q
+    child_clause, needed_inner = self.build_filter(
+  File "/home/pbraun/_dev/myproject_Sheikho/.inventory3Venv/lib/python3.8/site-packages/django/db/models/sql/query.py", line 1478, in build_filter
+    condition = self.build_lookup(lookups, col, value)
+  File "/home/pbraun/_dev/myproject_Sheikho/.inventory3Venv/lib/python3.8/site-packages/django/db/models/sql/query.py", line 1303, in build_lookup
+    lookup = lookup_class(lhs, rhs)
+  File "/home/pbraun/_dev/myproject_Sheikho/.inventory3Venv/lib/python3.8/site-packages/django/db/models/lookups.py", line 27, in __init__
+    self.rhs = self.get_prep_lookup()
+  File "/home/pbraun/_dev/myproject_Sheikho/.inventory3Venv/lib/python3.8/site-packages/django/db/models/fields/related_lookups.py", line 166, in get_prep_lookup
+    self.rhs = target_field.get_prep_value(self.rhs)
+  File "/home/pbraun/_dev/myproject_Sheikho/.inventory3Venv/lib/python3.8/site-packages/django/db/models/fields/__init__.py", line 2020, in get_prep_value
+    raise e.__class__(
+ValueError: Field 'id' expected a number but got ' '.
+>>> myPlatz = Platz.objects.filter(pc_id__isnull=True)
+>>> myPlatz
+<QuerySet [<Platz: Platz object (1)>, <Platz: Platz object (9)>]>
+>>> 
+KeyboardInterrupt
+>>> myPlatz = Platz.objects.filter(pc_id__isnull=True).select_related()
+>>> for x in myPlatz:
+...     x.room
+... 
+>>> myPlatz
+<QuerySet []>
+>>> myPlatz = Platz.objects.filter(pc_id__isnull=True)
+>>> for x in myPlatz:
+...     x.room
+...     x.room_id
+... 
+<Rooms: Rooms object (1)>
+1
+>>> for x in myPlatz:
+...     x.room_id.roomname
+... 
+Traceback (most recent call last):
+  File "<console>", line 2, in <module>
+AttributeError: 'int' object has no attribute 'roomname'
+>>> myPlatz = Platz.objects.filter(pc_id__isnull=True).select_related()
+>>> for x in myPlatz:
+...     x.room_id.roomname
+... 
+>>> 
+>>> myFreePlatz = Platz.objects.filter(pc_id__isnull=True).select_related()
+>>> myFreePlatz
+<QuerySet []>
+>>> myFreePlatz = Platz.objects.filter(pc_id__isnull=True)
+>>> myFreePlatz
+<QuerySet [<Platz: Platz object (1)>, <Platz: Platz object (9)>]>
+>>> myFreePlatz.select_related()
+<QuerySet []>
+>>> myFreePlatz = Platz.objects.select_related().filter(pc_id__isnull=True)
+>>> myFreePlatz
+<QuerySet []>
+>>> myFreePlatz = Platz.objects.filter(pc_id__isnull=True)
+>>> for x in myFreePlatz:
+...     x.room
+...     x.room_id
+...     x.room.roomname
+... 
+<Rooms: Rooms object (1)>
+1
+'SR01'
+Traceback (most recent call last):
+  File "<console>", line 4, in <module>
+AttributeError: 'NoneType' object has no attribute 'roomname'
+>>> for x in myFreePlatz:
+...     x.room_id.roomname
+... 
+Traceback (most recent call last):
+  File "<console>", line 2, in <module>
+AttributeError: 'int' object has no attribute 'roomname'
+>>> myFreePlatz = Platz.objects.filter(pc_id__isnull=True).select_related()
+>>> print(myFreePlatz.query)
+SELECT "itinventory_platz"."id", "itinventory_platz"."bezeichnung", "itinventory_platz"."room_id", "itinventory_platz"."pc_id", "itinventory_platz"."monitor1_id", "itinventory_platz"."monitor2_id", "itinventory_platz"."bemaerkung", "itinventory_platz"."tastatur", "itinventory_platz"."maus", "itinventory_pcs"."id", "itinventory_pcs"."modell", "itinventory_pcs"."RAM", "itinventory_pcs"."CPU", "itinventory_pcs"."anzahlkerne", "itinventory_pcs"."festplatte", "itinventory_pcs"."serialnummer", "itinventory_pcs"."monitor1", "itinventory_pcs"."monitor2", "itinventory_pcs"."bemaerkung", "itinventory_pcs"."status" FROM "itinventory_platz" INNER JOIN "itinventory_pcs" ON ("itinventory_platz"."pc_id" = "itinventory_pcs"."id") WHERE "itinventory_platz"."pc_id" IS NULL
+>>> myFreePlatz = Platz.objects.select_related()
+>>> print(myFreePlatz.query)
+SELECT "itinventory_platz"."id", "itinventory_platz"."bezeichnung", "itinventory_platz"."room_id", "itinventory_platz"."pc_id", "itinventory_platz"."monitor1_id", "itinventory_platz"."monitor2_id", "itinventory_platz"."bemaerkung", "itinventory_platz"."tastatur", "itinventory_platz"."maus", "itinventory_pcs"."id", "itinventory_pcs"."modell", "itinventory_pcs"."RAM", "itinventory_pcs"."CPU", "itinventory_pcs"."anzahlkerne", "itinventory_pcs"."festplatte", "itinventory_pcs"."serialnummer", "itinventory_pcs"."monitor1", "itinventory_pcs"."monitor2", "itinventory_pcs"."bemaerkung", "itinventory_pcs"."status" FROM "itinventory_platz" INNER JOIN "itinventory_pcs" ON ("itinventory_platz"."pc_id" = "itinventory_pcs"."id")
+>>> myFreePlatz = Platz.objects.all().filter(pc_id__isnull=True)
+>>> print(myFreePlatz.query)
+SELECT "itinventory_platz"."id", "itinventory_platz"."bezeichnung", "itinventory_platz"."room_id", "itinventory_platz"."pc_id", "itinventory_platz"."monitor1_id", "itinventory_platz"."monitor2_id", "itinventory_platz"."bemaerkung", "itinventory_platz"."tastatur", "itinventory_platz"."maus" FROM "itinventory_platz" WHERE "itinventory_platz"."pc_id" IS NULL
+>>> exit()
+(.inventory3Venv) pbraun@ubuntu2004-pab:~/_dev/myproject_Sheikho/inventory3$ python manage.py shell
+Python 3.8.10 (default, Nov 14 2022, 12:59:47) 
+[GCC 9.4.0] on linux
+Type "help", "copyright", "credits" or "license" for more information.
+(InteractiveConsole)
+>>> from itinventory.models import *
+>>> myFreePlatz = Platz.objects.all().filter(pc_id__isnull=True)
+>>> print(myFreePlatz.query)
+SELECT "itinventory_platz"."id", "itinventory_platz"."bezeichnung", "itinventory_platz"."room_id", "itinventory_platz"."pc_id", "itinventory_platz"."monitor1_id", "itinventory_platz"."monitor2_id", "itinventory_platz"."bemaerkung", "itinventory_platz"."tastatur", "itinventory_platz"."maus" FROM "itinventory_platz" WHERE "itinventory_platz"."pc_id" IS NULL
+>>> myFreePlatz = Platz.objects.filter(pc_id__isnull=True).select_related()
+>>> print(myFreePlatz.query)
+SELECT "itinventory_platz"."id", "itinventory_platz"."bezeichnung", "itinventory_platz"."room_id", "itinventory_platz"."pc_id", "itinventory_platz"."monitor1_id", "itinventory_platz"."monitor2_id", "itinventory_platz"."bemaerkung", "itinventory_platz"."tastatur", "itinventory_platz"."maus" FROM "itinventory_platz" WHERE "itinventory_platz"."pc_id" IS NULL
+>>> myFreePlatz = Platz.objects.filter(room, pc_id__isnull=True).select_related()
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+NameError: name 'room' is not defined
+>>> myFreePlatz = Platz.objects.filter(room_id__rommname='SR01', pc_id__isnull=True).select_related()
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+  File "/home/pbraun/_dev/myproject_Sheikho/.inventory3Venv/lib/python3.8/site-packages/django/db/models/manager.py", line 85, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/home/pbraun/_dev/myproject_Sheikho/.inventory3Venv/lib/python3.8/site-packages/django/db/models/query.py", line 1421, in filter
+    return self._filter_or_exclude(False, args, kwargs)
+  File "/home/pbraun/_dev/myproject_Sheikho/.inventory3Venv/lib/python3.8/site-packages/django/db/models/query.py", line 1439, in _filter_or_exclude
+    clone._filter_or_exclude_inplace(negate, args, kwargs)
+  File "/home/pbraun/_dev/myproject_Sheikho/.inventory3Venv/lib/python3.8/site-packages/django/db/models/query.py", line 1446, in _filter_or_exclude_inplace
+    self._query.add_q(Q(*args, **kwargs))
+  File "/home/pbraun/_dev/myproject_Sheikho/.inventory3Venv/lib/python3.8/site-packages/django/db/models/sql/query.py", line 1532, in add_q
+    clause, _ = self._add_q(q_object, self.used_aliases)
+  File "/home/pbraun/_dev/myproject_Sheikho/.inventory3Venv/lib/python3.8/site-packages/django/db/models/sql/query.py", line 1562, in _add_q
+    child_clause, needed_inner = self.build_filter(
+  File "/home/pbraun/_dev/myproject_Sheikho/.inventory3Venv/lib/python3.8/site-packages/django/db/models/sql/query.py", line 1478, in build_filter
+    condition = self.build_lookup(lookups, col, value)
+  File "/home/pbraun/_dev/myproject_Sheikho/.inventory3Venv/lib/python3.8/site-packages/django/db/models/sql/query.py", line 1292, in build_lookup
+    raise FieldError(
+django.core.exceptions.FieldError: Related Field got invalid lookup: rommname
+>>> myFreePlatz = Platz.objects.filter(room_id__room, pc_id__isnull=True).select_related()
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+NameError: name 'room_id__room' is not defined
+>>> myFreePlatz = Platz.objects.filter(room_id__room='SR01', pc_id__isnull=True).select_related()
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+  File "/home/pbraun/_dev/myproject_Sheikho/.inventory3Venv/lib/python3.8/site-packages/django/db/models/manager.py", line 85, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/home/pbraun/_dev/myproject_Sheikho/.inventory3Venv/lib/python3.8/site-packages/django/db/models/query.py", line 1421, in filter
+    return self._filter_or_exclude(False, args, kwargs)
+  File "/home/pbraun/_dev/myproject_Sheikho/.inventory3Venv/lib/python3.8/site-packages/django/db/models/query.py", line 1439, in _filter_or_exclude
+    clone._filter_or_exclude_inplace(negate, args, kwargs)
+  File "/home/pbraun/_dev/myproject_Sheikho/.inventory3Venv/lib/python3.8/site-packages/django/db/models/query.py", line 1446, in _filter_or_exclude_inplace
+    self._query.add_q(Q(*args, **kwargs))
+  File "/home/pbraun/_dev/myproject_Sheikho/.inventory3Venv/lib/python3.8/site-packages/django/db/models/sql/query.py", line 1532, in add_q
+    clause, _ = self._add_q(q_object, self.used_aliases)
+  File "/home/pbraun/_dev/myproject_Sheikho/.inventory3Venv/lib/python3.8/site-packages/django/db/models/sql/query.py", line 1562, in _add_q
+    child_clause, needed_inner = self.build_filter(
+  File "/home/pbraun/_dev/myproject_Sheikho/.inventory3Venv/lib/python3.8/site-packages/django/db/models/sql/query.py", line 1478, in build_filter
+    condition = self.build_lookup(lookups, col, value)
+  File "/home/pbraun/_dev/myproject_Sheikho/.inventory3Venv/lib/python3.8/site-packages/django/db/models/sql/query.py", line 1292, in build_lookup
+    raise FieldError(
+django.core.exceptions.FieldError: Related Field got invalid lookup: room
+>>> myFreePlatz = Platz.objects.filter(room_id__Room='SR01', pc_id__isnull=True).select_related()
+Traceback (most recent call last):
+  File "/home/pbraun/_dev/myproject_Sheikho/.inventory3Venv/lib/python3.8/site-packages/django/db/models/fields/__init__.py", line 2018, in get_prep_value
+    return int(value)
+ValueError: invalid literal for int() with base 10: 'SR01'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+  File "/home/pbraun/_dev/myproject_Sheikho/.inventory3Venv/lib/python3.8/site-packages/django/db/models/manager.py", line 85, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/home/pbraun/_dev/myproject_Sheikho/.inventory3Venv/lib/python3.8/site-packages/django/db/models/query.py", line 1421, in filter
+    return self._filter_or_exclude(False, args, kwargs)
+  File "/home/pbraun/_dev/myproject_Sheikho/.inventory3Venv/lib/python3.8/site-packages/django/db/models/query.py", line 1439, in _filter_or_exclude
+    clone._filter_or_exclude_inplace(negate, args, kwargs)
+  File "/home/pbraun/_dev/myproject_Sheikho/.inventory3Venv/lib/python3.8/site-packages/django/db/models/query.py", line 1446, in _filter_or_exclude_inplace
+    self._query.add_q(Q(*args, **kwargs))
+  File "/home/pbraun/_dev/myproject_Sheikho/.inventory3Venv/lib/python3.8/site-packages/django/db/models/sql/query.py", line 1532, in add_q
+    clause, _ = self._add_q(q_object, self.used_aliases)
+  File "/home/pbraun/_dev/myproject_Sheikho/.inventory3Venv/lib/python3.8/site-packages/django/db/models/sql/query.py", line 1562, in _add_q
+    child_clause, needed_inner = self.build_filter(
+  File "/home/pbraun/_dev/myproject_Sheikho/.inventory3Venv/lib/python3.8/site-packages/django/db/models/sql/query.py", line 1478, in build_filter
+    condition = self.build_lookup(lookups, col, value)
+  File "/home/pbraun/_dev/myproject_Sheikho/.inventory3Venv/lib/python3.8/site-packages/django/db/models/sql/query.py", line 1303, in build_lookup
+    lookup = lookup_class(lhs, rhs)
+  File "/home/pbraun/_dev/myproject_Sheikho/.inventory3Venv/lib/python3.8/site-packages/django/db/models/lookups.py", line 27, in __init__
+    self.rhs = self.get_prep_lookup()
+  File "/home/pbraun/_dev/myproject_Sheikho/.inventory3Venv/lib/python3.8/site-packages/django/db/models/fields/related_lookups.py", line 166, in get_prep_lookup
+    self.rhs = target_field.get_prep_value(self.rhs)
+  File "/home/pbraun/_dev/myproject_Sheikho/.inventory3Venv/lib/python3.8/site-packages/django/db/models/fields/__init__.py", line 2020, in get_prep_value
+    raise e.__class__(
+ValueError: Field 'id' expected a number but got 'SR01'.
+>>> myFreePlatz = Platz.objects.filter(room_id__Room, pc_id__isnull=True).select_related()
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+NameError: name 'room_id__Room' is not defined
+>>> myFreePlatz = Platz.objects.filter(room_id__Room=1, pc_id__isnull=True).select_related()
+>>> print(myFreePlatz.query)
+SELECT "itinventory_platz"."id", "itinventory_platz"."bezeichnung", "itinventory_platz"."room_id", "itinventory_platz"."pc_id", "itinventory_platz"."monitor1_id", "itinventory_platz"."monitor2_id", "itinventory_platz"."bemaerkung", "itinventory_platz"."tastatur", "itinventory_platz"."maus" FROM "itinventory_platz" INNER JOIN "itinventory_rooms" ON ("itinventory_platz"."room_id" = "itinventory_rooms"."id") INNER JOIN "itinventory_platz" T4 ON ("itinventory_rooms"."id" = T4."room_id") WHERE ("itinventory_platz"."pc_id" IS NULL AND T4."id" = 1)
+>>> myFree = Pcs.objects.filter(platz__pc_id__isnull=True)
+>>> print(myFree.query)
+SELECT "itinventory_pcs"."id", "itinventory_pcs"."modell", "itinventory_pcs"."RAM", "itinventory_pcs"."CPU", "itinventory_pcs"."anzahlkerne", "itinventory_pcs"."festplatte", "itinventory_pcs"."serialnummer", "itinventory_pcs"."monitor1", "itinventory_pcs"."monitor2", "itinventory_pcs"."bemaerkung", "itinventory_pcs"."status" FROM "itinventory_pcs" LEFT OUTER JOIN "itinventory_platz" ON ("itinventory_pcs"."id" = "itinventory_platz"."pc_id") WHERE "itinventory_platz"."pc_id" IS NULL
+>>> myFree = Platz.objects.filter(platz__pc_id__isnull=True)
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+  File "/home/pbraun/_dev/myproject_Sheikho/.inventory3Venv/lib/python3.8/site-packages/django/db/models/manager.py", line 85, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/home/pbraun/_dev/myproject_Sheikho/.inventory3Venv/lib/python3.8/site-packages/django/db/models/query.py", line 1421, in filter
+    return self._filter_or_exclude(False, args, kwargs)
+  File "/home/pbraun/_dev/myproject_Sheikho/.inventory3Venv/lib/python3.8/site-packages/django/db/models/query.py", line 1439, in _filter_or_exclude
+    clone._filter_or_exclude_inplace(negate, args, kwargs)
+  File "/home/pbraun/_dev/myproject_Sheikho/.inventory3Venv/lib/python3.8/site-packages/django/db/models/query.py", line 1446, in _filter_or_exclude_inplace
+    self._query.add_q(Q(*args, **kwargs))
+  File "/home/pbraun/_dev/myproject_Sheikho/.inventory3Venv/lib/python3.8/site-packages/django/db/models/sql/query.py", line 1532, in add_q
+    clause, _ = self._add_q(q_object, self.used_aliases)
+  File "/home/pbraun/_dev/myproject_Sheikho/.inventory3Venv/lib/python3.8/site-packages/django/db/models/sql/query.py", line 1562, in _add_q
+    child_clause, needed_inner = self.build_filter(
+  File "/home/pbraun/_dev/myproject_Sheikho/.inventory3Venv/lib/python3.8/site-packages/django/db/models/sql/query.py", line 1407, in build_filter
+    lookups, parts, reffed_expression = self.solve_lookup_type(arg)
+  File "/home/pbraun/_dev/myproject_Sheikho/.inventory3Venv/lib/python3.8/site-packages/django/db/models/sql/query.py", line 1217, in solve_lookup_type
+    _, field, _, lookup_parts = self.names_to_path(lookup_splitted, self.get_meta())
+  File "/home/pbraun/_dev/myproject_Sheikho/.inventory3Venv/lib/python3.8/site-packages/django/db/models/sql/query.py", line 1709, in names_to_path
+    raise FieldError(
+django.core.exceptions.FieldError: Cannot resolve keyword 'platz' into field. Choices are: bemaerkung, bezeichnung, id, maus, monitor1, monitor1_id, monitor2, monitor2_id, pc, pc_id, room, room_id, tastatur
+>>> myFree = Platz.objects.filter(pc_id__isnull=True)
+>>> myFree
+<QuerySet [<Platz: Platz object (1)>, <Platz: Platz object (9)>]>
+>>> print(myFree.query)
+SELECT "itinventory_platz"."id", "itinventory_platz"."bezeichnung", "itinventory_platz"."room_id", "itinventory_platz"."pc_id", "itinventory_platz"."monitor1_id", "itinventory_platz"."monitor2_id", "itinventory_platz"."bemaerkung", "itinventory_platz"."tastatur", "itinventory_platz"."maus" FROM "itinventory_platz" WHERE "itinventory_platz"."pc_id" IS NULL
+>>> myFree = Platz.objects.filter(pc_id__isnull=True, room_id)
+  File "<console>", line 1
+SyntaxError: positional argument follows keyword argument
+>>> myFree = Platz.objects.filter(pc_id__isnull=True).prefetch_related()
+>>> print(myFree.query)
+SELECT "itinventory_platz"."id", "itinventory_platz"."bezeichnung", "itinventory_platz"."room_id", "itinventory_platz"."pc_id", "itinventory_platz"."monitor1_id", "itinventory_platz"."monitor2_id", "itinventory_platz"."bemaerkung", "itinventory_platz"."tastatur", "itinventory_platz"."maus" FROM "itinventory_platz" WHERE "itinventory_platz"."pc_id" IS NULL
+>>> myFree = Platz.objects.filter(pc_id__isnull=True, room_id__room).prefetch_related()
+  File "<console>", line 1
+SyntaxError: positional argument follows keyword argument
+>>> myFree = Platz.objects.filter(pc_id__isnull=True).order_by('room__roomname')
+>>> print(myFree.query)
+SELECT "itinventory_platz"."id", "itinventory_platz"."bezeichnung", "itinventory_platz"."room_id", "itinventory_platz"."pc_id", "itinventory_platz"."monitor1_id", "itinventory_platz"."monitor2_id", "itinventory_platz"."bemaerkung", "itinventory_platz"."tastatur", "itinventory_platz"."maus" FROM "itinventory_platz" LEFT OUTER JOIN "itinventory_rooms" ON ("itinventory_platz"."room_id" = "itinventory_rooms"."id") WHERE "itinventory_platz"."pc_id" IS NULL ORDER BY "itinventory_rooms"."roomname" ASC
+>>> myFree = Platz.objects.all().filter(pc_id__isnull=True).order_by('room__roomname')
+>>> print(myFree.query)
+SELECT "itinventory_platz"."id", "itinventory_platz"."bezeichnung", "itinventory_platz"."room_id", "itinventory_platz"."pc_id", "itinventory_platz"."monitor1_id", "itinventory_platz"."monitor2_id", "itinventory_platz"."bemaerkung", "itinventory_platz"."tastatur", "itinventory_platz"."maus" FROM "itinventory_platz" LEFT OUTER JOIN "itinventory_rooms" ON ("itinventory_platz"."room_id" = "itinventory_rooms"."id") WHERE "itinventory_platz"."pc_id" IS NULL ORDER BY "itinventory_rooms"."roomname" ASC
+>>> myFree = Platz.objects.all().select_related().filter(pc_id__isnull=True).order_by('room__roomname')
+>>> print(myFree.query)
+SELECT "itinventory_platz"."id", "itinventory_platz"."bezeichnung", "itinventory_platz"."room_id", "itinventory_platz"."pc_id", "itinventory_platz"."monitor1_id", "itinventory_platz"."monitor2_id", "itinventory_platz"."bemaerkung", "itinventory_platz"."tastatur", "itinventory_platz"."maus" FROM "itinventory_platz" LEFT OUTER JOIN "itinventory_rooms" ON ("itinventory_platz"."room_id" = "itinventory_rooms"."id") WHERE "itinventory_platz"."pc_id" IS NULL ORDER BY "itinventory_rooms"."roomname" ASC
+>>> myFree = Platz.objects.all().select_related('Rooms').filter(pc_id__isnull=True).order_by('room__roomname')
+>>> print(myFree.query)
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+  File "/home/pbraun/_dev/myproject_Sheikho/.inventory3Venv/lib/python3.8/site-packages/django/db/models/sql/query.py", line 285, in __str__
+    sql, params = self.sql_with_params()
+  File "/home/pbraun/_dev/myproject_Sheikho/.inventory3Venv/lib/python3.8/site-packages/django/db/models/sql/query.py", line 293, in sql_with_params
+    return self.get_compiler(DEFAULT_DB_ALIAS).as_sql()
+  File "/home/pbraun/_dev/myproject_Sheikho/.inventory3Venv/lib/python3.8/site-packages/django/db/models/sql/compiler.py", line 593, in as_sql
+    extra_select, order_by, group_by = self.pre_sql_setup()
+  File "/home/pbraun/_dev/myproject_Sheikho/.inventory3Venv/lib/python3.8/site-packages/django/db/models/sql/compiler.py", line 71, in pre_sql_setup
+    self.setup_query()
+  File "/home/pbraun/_dev/myproject_Sheikho/.inventory3Venv/lib/python3.8/site-packages/django/db/models/sql/compiler.py", line 62, in setup_query
+    self.select, self.klass_info, self.annotation_col_map = self.get_select()
+  File "/home/pbraun/_dev/myproject_Sheikho/.inventory3Venv/lib/python3.8/site-packages/django/db/models/sql/compiler.py", line 278, in get_select
+    related_klass_infos = self.get_related_selections(select)
+  File "/home/pbraun/_dev/myproject_Sheikho/.inventory3Venv/lib/python3.8/site-packages/django/db/models/sql/compiler.py", line 1193, in get_related_selections
+    raise FieldError(
+django.core.exceptions.FieldError: Invalid field name(s) given in select_related: 'Rooms'. Choices are: room, pc, monitor1, monitor2
+>>> myFree = Platz.objects.all().select_related('room').filter(pc_id__isnull=True).order_by('room__roomname')
+>>> print(myFree.query)
+SELECT "itinventory_platz"."id", "itinventory_platz"."bezeichnung", "itinventory_platz"."room_id", "itinventory_platz"."pc_id", "itinventory_platz"."monitor1_id", "itinventory_platz"."monitor2_id", "itinventory_platz"."bemaerkung", "itinventory_platz"."tastatur", "itinventory_platz"."maus", "itinventory_rooms"."id", "itinventory_rooms"."roomname", "itinventory_rooms"."anzahlplaetze" FROM "itinventory_platz" LEFT OUTER JOIN "itinventory_rooms" ON ("itinventory_platz"."room_id" = "itinventory_rooms"."id") WHERE "itinventory_platz"."pc_id" IS NULL ORDER BY "itinventory_rooms"."roomname" ASC
+>>> myFree = Platz.objects.all().select_related('room').filter(pc_id__isnull=True)
+>>> for x in myFree:
+...     x.room_id.roomname
+... 
+Traceback (most recent call last):
+  File "<console>", line 2, in <module>
+AttributeError: 'int' object has no attribute 'roomname'
+>>> for x in myFree:
+...     x.room.roomname
+... 
+'SR01'
+Traceback (most recent call last):
+  File "<console>", line 2, in <module>
+AttributeError: 'NoneType' object has no attribute 'roomname'
+>>> myFree = Platz.objects.all().select_related('room')
+>>> for x in myFree:
+...     x.room.roomname
+... 
+'SR01'
+'Verliehen'
+'SR02'
+'SR01'
+Traceback (most recent call last):
+  File "<console>", line 2, in <module>
+AttributeError: 'NoneType' object has no attribute 'roomname'
+>>> myFree = Platz.objects.all().select_related('room').filter(pc_id__isnull=True)
+>>> for x in myFree:
+...     x.room.roomname
+... 
+'SR01'
+'SR01'
+>>> print(myfree.query)
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+NameError: name 'myfree' is not defined
+>>> myFree = Platz.objects.all().select_related('room').filter(pc_id__isnull=True)
+>>> print(myFree.query)
+SELECT "itinventory_platz"."id", "itinventory_platz"."bezeichnung", "itinventory_platz"."room_id", "itinventory_platz"."pc_id", "itinventory_platz"."monitor1_id", "itinventory_platz"."monitor2_id", "itinventory_platz"."bemaerkung", "itinventory_platz"."tastatur", "itinventory_platz"."maus", "itinventory_rooms"."id", "itinventory_rooms"."roomname", "itinventory_rooms"."anzahlplaetze" FROM "itinventory_platz" LEFT OUTER JOIN "itinventory_rooms" ON ("itinventory_platz"."room_id" = "itinventory_rooms"."id") WHERE "itinventory_platz"."pc_id" IS NULL
+>>> 
