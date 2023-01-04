@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Inventory management</title>
+  <style>
+    /* *{
+            border:solid 1px blue
+        } */
+  </style>
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+</head>
+
+<body>
+  <div class="container bg-light rounded my-5">
+    <div class="row">
+      <div class="col-12">
+        <!-- START PLACE CONTENT HERE  -->
+
+        <h1 class="display-2 my-5"> {{myrooms.roomname }}</h1>
+
+        <div class="table-responsive">
+          <table class="table table-sm">
+            <tr>
+              <th>Platz</th>
+              <th>PC Modell</th>
+              <th>PC RAM</th>
+              <th>PC CPU</th>
+              <th>PC anzahlKerne</th>
+              <th>PC seriennummer</th>
+              <th>PC Festplatte</th>
+              <th>PC Monitor1</th>
+              <th>PC Monitor2</th>
+              <th>PC Bemerkung</th>
+              <th>PC Status</th>
+              <th>Monitor1</th>
+              <th>Monitor1 Schnittstelle</th>
+              <th>Monitor1 serialnummer</th>
+              <th>Monitor1 status</th>
+              <th>Monitor1 bemaerkung</th>
+              <th>Monitor2</th>
+              <th>Monitor2 Schnittstelle</th>
+              <th>Monitor2 serialnummer</th>
+              <th>Monitor2 status</th>
+              <th>Monitor2 bemaerkung</th>
+              <th>Tastatur</th>
+              <th>Maus</th>
+              <th>Bemerkung</th>
+              <th>Delete</th>
+
+            </tr>
+            {% for line in myplaetze %}
+            <tr>
+              <!-- <td><a href="/itinventory/pcviewFilter/{{ line.id }}">{{ line.id }}</a></td>-->
+              <td><a href="/itinventory/updatePlatz/{{ line.id }}">{{ line.bezeichnung }}</a></td>
+              <td><a href="/itinventory/updatePlatzPC/{{ line.id }}">{{ line.pc.modell }}</a></td>
+              <td>{{ line.pc.RAM }}</td>
+              <td>{{ line.pc.CPU }}</td>
+              <td>{{ line.pc.anzahlkerne }}</td>
+              <td>{{ line.pc.festplatte }}</td>
+              <td>{{ line.pc.serialnummer }}</td>
+              <td>{{ line.pc.monitor1 }}</td>
+              <td>{{ line.pc.monitor2 }}</td>
+              <td>{{ line.pc.bemaerkung }}</td>
+              <td>{{ line.pc.status }}</td>
+              <td><a href="/itinventory/updatePlatzMonitor1/{{ line.id }}">{{ line.monitor1.serialnummer }}</a></td>
+              <td>{{ line.monitor1.schnittstelle}}</td>
+              <td>{{ line.monitor1.serialnummer}}</td>
+              <td>{{ line.monitor1.status}}</td>
+              <td>{{ line.monitor1.bemaerkung}}</td>
+              <td><a href="/itinventory/updatePlatzMonitor2/{{ line.id }}">{{ line.monitor2.serialnummer }}</a></td>
+              <td>{{ line.monitor2.schnittstelle}}</td>
+              <td>{{ line.monitor2.serialnummer}}</td>
+              <td>{{ line.monitor2.status}}</td>
+              <td>{{ line.monitor2.bemaerkung}}</td>
+              <td><a href="/itinventory/updatePlatz/{{ line.id }}">{{ line.maus }}</a></td>
+              <td><a href="/itinventory/updatePlatz/{{ line.id }}">{{ line.tastatur }}</a></td>
+              <td>{{ line.bemaerkung }}</td>
+
+              <td><a href="/itinventory/delplatz/{{ line.id }}" class="btn btn-danger">Löschen</a></td>
+            </tr>
+            {% endfor %}
+
+          </table>
+        </div>
+        <a href="/itinventory/addPlatzRaum/{{myrooms.id }}" class="btn btn-primary my-5">Platz hinzufügen</a>
+        <!-- <a href="/itinventory/updatePlatzVerleih/{{myrooms.id }}" class="btn btn-primary my-5" >Verleih</a> -->
+        <a href="/itinventory" class="btn btn-secondary">Zurück</a>
+      </div>
+    </div>
+  </div>
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
+    crossorigin="anonymous"></script>
+</body>
+
+</html>

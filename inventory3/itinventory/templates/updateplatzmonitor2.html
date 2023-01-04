@@ -1,0 +1,104 @@
+{% load static %}
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Inventory management</title>
+    <style>
+        /* *{
+            border:solid 1px blue
+        } */
+    </style>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <link rel="icon" href="https://usercontent.one/wp/www.qa-rheinruhr.de/wp-content/uploads/favicon.png" sizes="32x32">  </head>
+  <body>
+    <div class="container bg-light rounded" >
+        <div class="row">
+            <div class="col-12">
+              <!-- START PLACE CONTENT HERE  -->
+              
+              <h1 class="display-2 my-5">Platz {{ myplaetze.bezeichnung }}</h1>
+
+
+              <form action="/itinventory/updatePlatzMonitor2/updatePlatzMonitor2Record/{{myplaetze.id}}" method="post">
+                  {% csrf_token %}
+                  <div class="table-responsive">
+                    <table class="table">
+                        <tr>
+                          
+                          
+                          <th>Monitor2</th>
+                          
+                        </tr>
+                        <tr>
+                          
+                          
+                   
+                        
+                          <td>
+                            <!-- <input name="monitor2" type="text" value="{{ myplaetze.monitor2_id }}"> -->
+                            <select name="monitor2" id="monitor2">
+                              <option value="{{ myplaetze.monitor2_id }}">{{ myplaetze.monitor2.serialnummer }}</option>
+                              {% for line in mymonitors2 %}
+                              <option value="{{line.id}}">{{line.serialnummer}}</option>
+                              {% endfor %}
+                            </select>
+                  
+                          
+                        
+                          
+                        </tr>
+                        <tr>
+                         <!-- <input type="submit" value="el PC" placeholder="Add PC" class="btn btn-primary">-->
+
+                          <td>
+                            <a href="/itinventory/addmonitor/{{ myplaetze.room_id }}" class="btn btn-primary">Add Monitor</a>
+                          </td>
+                        </tr>
+                        <tr>
+                         <!-- <input type="submit" value="Add PC" placeholder="Add PC" class="btn btn-primary">-->
+             
+                          <td>
+                            <a href="/itinventory/delmonitor/{{ myplaetze.id }}" class="btn btn-danger">Del Monitor</a>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td><input type="submit" value="Speichern" placeholder="Speichern" class="btn btn-primary"></td>
+                          </tr>
+                         <tr>
+                          <td><a href="/itinventory/platzviewFilter/{{ myplaetze.room_id }}" class="btn btn-secondary">abbrechen</a></td>
+
+                         </tr>
+                         <tr>
+                          <input name="room" type="text" value="{{ myplaetze.room_id }}" class="invisible">
+  
+                        </tr>
+  
+                        
+                      
+                      </table>
+                  </div>
+
+              </form>
+                <!-- ENDE PLACE CONTENT HERE  -->
+            </div>
+
+        </div>
+
+
+    </div>
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
+  </body>
+</html>
+
+
+
+
+
+
+
+

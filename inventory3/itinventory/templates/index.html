@@ -1,0 +1,85 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Inventory management</title>
+  <style>
+    /* *{
+            border:solid 1px blue
+        } */
+  </style>
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+</head>
+
+<body>
+  <div class="container bg-light rounded my-3">
+    <div class="row">
+      <div class="col">
+        <a href="/itinventory/platzviewFilterGesamt" class="btn btn-secondary">Zur Gesamtübersicht</a>
+      </div>
+      <div class="col">
+        <a href="/itinventory/platzviewFilterVerleih/11" class="btn btn-primary">Zum Verleih</a>
+      </div>
+      <div class="col">
+        <a href="/itinventory/pcs" class="btn btn-primary">PC Verwaltung</a>
+      </div>
+      <div class="col">
+        <a href="/itinventory/platzviewFilterVerleih/11" class="btn btn-primary">Monitor Verwaltung</a>
+      </div>
+      <div class="col">
+        <a href="/itinventory/logout/" class="btn btn-danger">Logout</a>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12">
+        <!-- START PLACE CONTENT HERE  -->
+
+        <h1 class="display-1">Räume Übersicht</h1>
+
+        <table class="table ">
+          <tr class="table">
+            <th>
+              <h6 class="display-6">Raumname</h6>
+            </th>
+            <th>
+              <h6 class="display-6">Plätze</h6>
+            </th>
+          </tr>
+          {% for line in myrooms %}
+          <tr>
+            <td>
+              <a href="platzviewFilter/{{ line.id }}" class="btn btn-outline-info w-100 text-start">
+                {{ line.roomname}}</a>
+            </td>
+            <td class="fs-4 table-light rounded ">{{ line.anzahlplaetze }}</td>
+          </tr>
+          {% endfor %}
+        </table>
+
+
+
+        <a href="/itinventory/addraum" class="btn btn-primary">Raum hinzufügen</a>
+        <!-- <a href="/itinventory/addplatz" class="btn btn-primary">add Platz</a>
+        <a href="/itinventory/addpc" class="btn btn-primary">add PC</a>
+        <a href="/itinventory/addmonitor" class="btn btn-primary">add Monitor</a> -->
+
+        <!-- ENDE PLACE CONTENT HERE  -->
+      </div>
+
+    </div>
+
+
+  </div>
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
+    crossorigin="anonymous"></script>
+</body>
+
+</html>
+<!-- <link rel="stylesheet" href="{% static 'inventory/style.css' %}">  -->
