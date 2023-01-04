@@ -190,7 +190,7 @@ def updatePlatzRecord(request, id):
     updatePcRecord_monitor1 = request.POST['monitor1']
     updatePcRecord_monitor2 = request.POST['monitor2']
     updatePcRecord_maus = request.POST['maus']
-    updatePcRecord_tastator = request.POST['tastator']
+    updatePcRecord_tastator = request.POST['tastatur']
 
     myplaetze = Platz.objects.get(id=id)
     myplaetze.bezeichnung = updatePcRecord_bezeichnung
@@ -199,7 +199,7 @@ def updatePlatzRecord(request, id):
     myplaetze.monitor1_id = updatePcRecord_monitor1
     myplaetze.monitor2_id = updatePcRecord_monitor2
     myplaetze.maus = updatePcRecord_maus
-    myplaetze.tastator = updatePcRecord_tastator
+    myplaetze.tastatur = updatePcRecord_tastator
 
     myplaetze.save()
 
@@ -729,3 +729,24 @@ def updatePlatzVerleihRecord(request, id):
     myplaetze.save()
 
     return HttpResponseRedirect(reverse('platzviewFilterVerleih', args=[updatePcRecord_room]))
+
+def changeMouse(request, id_platz):
+    myPlatz = Platz.objects.get(id=id_platz)
+    if myPlatz.maus == True:
+        myPlatz.maus = False
+    else: 
+        myPlatz.maus = True
+    myPlatz.save()
+    id_room = myPlatz.room_id
+    return HttpResponseRedirect(reverse('platzviewFilter', args=[id_room]))
+
+def changeKeyboard(request, id_platz):
+    myPlatz = Platz.objects.get(id=id_platz)
+    if myPlatz.tastatur == True:
+        myPlatz.tastatur = False
+    else: 
+        myPlatz.tastatur = True
+    myPlatz.save()
+    #auf alten raum weiterleiten
+    id_room = myPlatz.room_id
+    return HttpResponseRedirect(reverse('platzviewFilter', args=[id_room]))

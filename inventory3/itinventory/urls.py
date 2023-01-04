@@ -75,4 +75,8 @@ urlpatterns = [
 
     #pc Management
     path('pcs/', views.pcs, name='pcs'),
+
+    # change Mouse/keyboard
+    path('changeMouse/<int:id_platz>', views.changeMouse, name='changeMouse'),
+    path('changeKeyboard/<int:id_platz>', views.changeKeyboard, name='changeKeyboard'),
 ]
