@@ -382,7 +382,6 @@ def pcviewFilter(request, id):
 
 
 def updatePc(request, id, id_room):
-    #if request == post
     mypcs = Pcs.objects.get(id=id)
     myFreePlatz = Platz.objects.all().select_related('room').filter(pc_id__isnull=True)
     template = loader.get_template('updatePc.html')
@@ -421,14 +420,14 @@ def updatePcRecord(request, id_pc, id_room):
     if 'movePc' in request.POST:
         # get the id of the old Platz
         id_platz = request.POST['id_platz']
+        # empty old platz 
+        myOldPlatz = Platz.objects.get(pc_id=id_pc)
+        myOldPlatz.pc_id = None
+        myOldPlatz.save()
         # Neuen Pc dem Platz hinzufügen
         myFreePlatz = Platz.objects.get(id=id_platz)
         myFreePlatz.pc_id = id_pc
         myFreePlatz.save()
-        # empty old platz 
-        myEmptiedPlatz = Platz.objects.get(id=id_platz)
-        myEmptiedPlatz.pc_id = None
-        myEmptiedPlatz.save()
 
         return HttpResponseRedirect(reverse('platzviewFilter', args=[id_room]))
 
@@ -524,19 +523,14 @@ def monitorviewFilter(request, id):
     return HttpResponse(template.render(context, request))
 
 
-def updateMonitor(request, id, id_room):
+def updateMONITOR(request, id):
     mymonitors = Monitor.objects.get(id=id)
-    mypcs = Pcs.objects.get(id=id)
-    template = loader.get_template('updatemonitor.html')
+    template = loader.get_template('updateMONITOR.html')
     context = {
         'mymonitors': mymonitors,
-        'mypcs': mypcs,
-        'id_room': id_room,
     }
     return HttpResponse(template.render(context, request))
-
-
-def updateMonitorRecord(request, id, id_room):
+def updateMONITORRecord(request, id):
     #updateMonitorRecord_id = request.POST['id']
     updateMonitorRecord_schnittstelle = request.POST['schnittstelle']
     updateMonitorRecord_serialnummer = request.POST['serialnummer']
@@ -548,7 +542,56 @@ def updateMonitorRecord(request, id, id_room):
 
     mymonitors.save()
 
-    return HttpResponseRedirect(reverse('platzviewFilter', args=[id_room]))
+
+    return HttpResponseRedirect(reverse('monitors'))
+
+def updateMonitor(request, id, id_room):
+    mymonitors = Monitor.objects.get(id=id)
+    myFreePlatz = Platz.objects.all().select_related('room').filter(Q(monitor1_id__isnull=True) | Q(monitor2_id__isnull=True))
+    template = loader.get_template('updateMonitor.html')
+    context = {
+        'mymonitors': mymonitors,
+        'id_room': id_room,
+        'myFreePlatz': myFreePlatz,
+    }
+    return HttpResponse(template.render(context, request))
+
+
+def updateMonitorRecord(request, id, id_room):
+    # change monitor data
+    if 'save' in request.POST:
+        #updateMonitorRecord_id = request.POST['id']
+        updateMonitorRecord_schnittstelle = request.POST['schnittstelle']
+        updateMonitorRecord_serialnummer = request.POST['serialnummer']
+
+        mymonitors = Monitor.objects.get(id=id)
+        #mymonitors.id = updateMonitorRecord_id
+        mymonitors.schnittstelle = updateMonitorRecord_schnittstelle
+        mymonitors.serialnummer = updateMonitorRecord_serialnummer
+
+        mymonitors.save()
+
+        return HttpResponseRedirect(reverse('platzviewFilter', args=[id_room]))
+    # move monitor
+    if 'moveMonitor' in request.POST:
+        # get the id of the old Platz
+        id_platz = request.POST['id_platz']
+        # empty old platz 
+        myOldPlatz = Platz.objects.filter(Q(monitor1_id=id) | Q(monitor2_id=id)).get()
+        if myOldPlatz.monitor1_id == id:
+            myOldPlatz.monitor1_id = None
+        elif myOldPlatz.monitor2_id == id:
+            myOldPlatz.monitor2_id = None
+        myOldPlatz.save()
+        # Neuen Pc dem Platz hinzufügen
+        myFreePlatz = Platz.objects.get(id=id_platz)
+        if myFreePlatz.monitor1_id == None:
+            myFreePlatz.monitor1_id = id
+        elif myFreePlatz.monitor2_id == None:
+            myFreePlatz.monitor2_id = id
+        myFreePlatz.save()
+
+        return HttpResponseRedirect(reverse('platzviewFilter', args=[id_room]))
 
 
 def addMONITOR(RequestContext):

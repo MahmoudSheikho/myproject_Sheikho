@@ -40,10 +40,20 @@
               <!-- <td><a href="/itinventory/pcviewFilter/{{ line.id }}">{{ line.id }}</a></td>-->
               <td><a href="/itinventory/updatePlatz/{{ line.id }}">{{ line.bezeichnung }}</a></td>
               <td>
-                <a href="/itinventory/updatePc/{{ line.pc_id }}/{{ myrooms.id }}">{{ line.pc.modell }}</a>
+                <a href="/itinventory/updatePc/{{ line.pc_id }}/{{ myrooms.id }}">
+                  {% if line.pc.modell == None %}-{%else%}{{ line.pc.modell }}{% endif%}
+                </a>
               </td>
-              <td><a href="/itinventory/updateMonitor/{{ line.monitor1_id }}/{{ myrooms.id }}">{{ line.monitor1.serialnummer }}</a></td>
-              <td><a href="/itinventory/updateMonitor/{{ line.monitor2_id }}/{{ myrooms.id }}">{{ line.monitor2.serialnummer }}</a></td>
+              <td>
+                <a href="/itinventory/updateMonitor/{{ line.monitor1_id }}/{{ myrooms.id }}">
+                  {% if line.monitor1.serialnummer == None %}-{%else%}{{ line.monitor1.serialnummer}}{% endif%}
+                </a>
+              </td>
+              <td>
+                <a href="/itinventory/updateMonitor/{{ line.monitor2_id }}/{{ myrooms.id }}">
+                  {% if line.monitor2.serialnummer == None %}-{%else%}{{ line.monitor2.serialnummer}}{% endif%}
+                </a>
+              </td>
               <td><a href="/itinventory/updatePlatz/{{ line.id }}">{{ line.maus }}</a></td>
               <td><a href="/itinventory/updatePlatz/{{ line.id }}">{{ line.tastatur }}</a></td>
 
