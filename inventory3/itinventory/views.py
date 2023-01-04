@@ -183,7 +183,7 @@ def updatePlatz(request, id):
     }
     return HttpResponse(template.render(context, request))
     
-def updatePlatzRecord(request, id):
+def updatePlatzRecord(request, id_platz):
     updatePcRecord_bezeichnung = request.POST['bezeichnung']
     updatePcRecord_room = request.POST['room']
     updatePcRecord_pc = request.POST['pc']
@@ -192,15 +192,9 @@ def updatePlatzRecord(request, id):
     updatePcRecord_maus = request.POST['maus']
     updatePcRecord_tastator = request.POST['tastatur']
 
-    myplaetze = Platz.objects.get(id=id)
-    myplaetze.bezeichnung = updatePcRecord_bezeichnung
-    myplaetze.room_id = updatePcRecord_room
-    myplaetze.pc_id = updatePcRecord_pc
-    myplaetze.monitor1_id = updatePcRecord_monitor1
-    myplaetze.monitor2_id = updatePcRecord_monitor2
-    myplaetze.maus = updatePcRecord_maus
-    myplaetze.tastatur = updatePcRecord_tastator
+    myplaetze = Platz.objects.get(id=id_platz)
 
+    myplaetze.bezeichnung = updatePcRecord_bezeichnung
     myplaetze.save()
 
     return HttpResponseRedirect(reverse('platzviewFilter', args=[updatePcRecord_room]))

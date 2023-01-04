@@ -25,8 +25,8 @@ class Monitor(models.Model):
       
 class Platz(models.Model):
   bezeichnung = models.CharField(max_length=50, null=True)
-  room = models.ForeignKey(Rooms,on_delete=callable,null=True,default=None, related_name='Room')
-  pc = models.ForeignKey(Pcs,on_delete=models.CASCADE, default=None,null=True)
+  room = models.ForeignKey(Rooms, on_delete=models.CASCADE,null=True,default=None, related_name='Room')
+  pc = models.ForeignKey(Pcs, on_delete=models.CASCADE, default=None,null=True)
   monitor1 = models.ForeignKey(Monitor,on_delete=models.CASCADE, related_name='Monitor1', default=None,null=True)
   monitor2 = models.ForeignKey(Monitor,on_delete=models.CASCADE, related_name='Monitor2', default=None,null=True)
   bemaerkung = models.CharField(max_length=300,default=None, null=True, blank=True)

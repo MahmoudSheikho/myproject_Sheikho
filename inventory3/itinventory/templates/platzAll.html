@@ -56,8 +56,14 @@
             {% for line in myplaetze %}
             <tr>
               <!-- <td><a href="/itinventory/pcviewFilter/{{ line.id }}">{{ line.id }}</a></td>-->
-              <td><a href="/itinventory/updatePlatz/{{ line.id }}">{{ line.bezeichnung }}</a></td>
-              <td><a href="/itinventory/updatePlatzPC/{{ line.id }}">{{ line.pc.modell }}</a></td>
+              <td><a href="/itinventory/updatePlatz/{{ line.id }}">
+                {% if line.bezeichnung == None %}-{%else%}{{ line.bezeichnung }}{% endif%}
+              </a></td>
+              <td><a href="/itinventory/updatePlatzPC/{{ line.id }}">
+                <!-- %%% -->
+                <!-- muss noch auf alle Spalten Übertragen werden -->
+                {% if line.pc.modell == None %}-{%else%}{{ line.pc.modell }}{% endif%}
+              </a></td>
               <td>{{ line.pc.RAM }}</td>
               <td>{{ line.pc.CPU }}</td>
               <td>{{ line.pc.anzahlkerne }}</td>
@@ -87,7 +93,7 @@
 
           </table>
         </div>
-        <a href="/itinventory/addPlatzRaum/{{myrooms.id }}" class="btn btn-primary my-5">Platz hinzufügen</a>
+        <!-- <a href="/itinventory/addPlatzRaum/{{myrooms.id }}" class="btn btn-primary my-5">Platz hinzufügen</a> -->
         <!-- <a href="/itinventory/updatePlatzVerleih/{{myrooms.id }}" class="btn btn-primary my-5" >Verleih</a> -->
         <a href="/itinventory" class="btn btn-secondary">Zurück</a>
       </div>
