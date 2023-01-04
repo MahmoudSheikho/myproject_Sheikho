@@ -57,11 +57,14 @@ urlpatterns = [
     path('addMONITOR/', views.addMONITOR, name='addMONITOR'),
     path('addmonitor/addMONITORRecord/',views.addMONITORRecord, name='addMONITORRecord'),
 
+    path('updateMONITOR/<int:id>', views.updateMONITOR, name='updateMONITOR'),
+    path('updateMONITOR/updateMONITORRecord/<int:id>',views.updateMONITORRecord, name='updateMONITORRecord'),
 
     path('addmonitor/<int:id>', views.addmonitor, name='addmonitor'),
 
     path('addmonitor/addMonitorRecord/<int:id>',views.addMonitorRecord, name='addMonitorRecord'),
     path('monitorviewFilter/<int:id>',views.monitorviewFilter, name='monitorviewFilter'),
+
     path('updateMonitor/<int:id>/<int:id_room>/', views.updateMonitor, name='updateMonitor'),
     path('updateMonitor/updateMonitorRecord/<int:id>/<int:id_room>/',views.updateMonitorRecord, name='updateMonitorRecord'),
     path('delmonitor/<int:id>', views.delmonitor, name='delmonitor'),
