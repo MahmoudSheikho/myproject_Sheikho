@@ -23,7 +23,7 @@
         <h1 class="display-1 my-5">Monitor: {{ mymonitors.serialnummer }}</h1>
 
 
-        <form action="/itinventory/updateMonitor/updateMonitorRecord/{{ mymonitors.id }}/{{ id_room}}/" method="post">
+        <form action="/itinventory/updateMONITOR/updateMONITORRecord/{{ mymonitors.id }}" method="post">
           {% csrf_token %}
           <div class="table responsive">
             <table class="table">
