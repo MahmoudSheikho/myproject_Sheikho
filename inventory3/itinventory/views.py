@@ -450,6 +450,11 @@ def addpcRecord(request):
     addpcRecord_CPU = request.POST['CPU']
     addpcRecord_anzahlkerne = request.POST['anzahlkerne']
     addpcRecord_festplatte = request.POST['festplatte']
+    addpcRecord_serienummer = request.POST['seriennummer']
+    addpcRecord_bemaerkung = request.POST['bemaerkung']
+    addpcRecord_status = request.POST['status']
+
+
     id_platz = request.POST['id_platz']
     # addpcRecord_monitor1 = request.POST['monitor1']
     # addpcRecord_monitor2 = request.POST['monitor2']
@@ -460,6 +465,9 @@ def addpcRecord(request):
         CPU=addpcRecord_CPU,
         anzahlkerne=addpcRecord_anzahlkerne,
         festplatte=addpcRecord_festplatte,
+        serialnummer=addpcRecord_serienummer,
+        bemaerkung= addpcRecord_bemaerkung,
+        status= addpcRecord_status
         # pc=addpcRecord_pc,
         # monitor1=addpcRecord_monitor1,
         # monitor2=addpcRecord_monitor2
