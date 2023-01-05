@@ -284,6 +284,12 @@ def delplatz(request, id, id_room):
     myplatz.delete()
     return HttpResponseRedirect(reverse('platzviewFilter', args=[id_room]))
 
+def delplatzVerleih(request, id, id_room):
+    myplatz = Platz.objects.get(id=id)
+    myplatz.room_id = 999
+    myplatz.save()
+    return HttpResponseRedirect(reverse('platzviewFilterVerleih', args=[id_room]))
+
 def updatePlatzMonitor1(request, id):
     myplaetze = Platz.objects.get(id=id)
     #mymonitors1 = Monitor.objects.filter().exclude(id=myplaetze.monitor1_id).values()

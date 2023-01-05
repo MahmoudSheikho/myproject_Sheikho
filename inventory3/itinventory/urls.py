@@ -14,6 +14,7 @@ urlpatterns = [
     path('addPlatzRaum/<int:id>', views.addPlatzRaum, name='addPlatzRaum'),
     path('addplatz/addplatzRecord/', views.addplatzRecord, name='addplatzRecord'),
     path('delplatz/<int:id>/<int:id_room>/', views.delplatz, name='delplatz'),
+    path('delplatzVerleih/<int:id>/<int:id_room>/', views.delplatzVerleih, name='delplatzVerleih'),
 
     path('updatePlatz/<int:id>', views.updatePlatz, name='updatePlatz'),
     path('updatePlatz/updatePlatzRecord/<int:id_platz>',views.updatePlatzRecord, name='updatePlatzRecord'),
