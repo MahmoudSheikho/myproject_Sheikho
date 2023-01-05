@@ -41,17 +41,17 @@
               <td><a href="/itinventory/updatePlatz/{{ line.id }}">{{ line.bezeichnung }}</a></td>
               <td>
                 <a href="/itinventory/updatePc/{{ line.pc_id }}/{{ myrooms.id }}">
-                  {% if line.pc.modell == None %}-{%else%}{{ line.pc.modell }}{% endif%}
+                  {{ line.pc.modell }}
                 </a>
               </td>
               <td>
                 <a href="/itinventory/updateMonitor/{{ line.monitor1_id }}/{{ myrooms.id }}">
-                  {% if line.monitor1.serialnummer == None %}-{%else%}{{ line.monitor1.serialnummer}}{% endif%}
+                  {{ line.monitor1.serialnummer}}
                 </a>
               </td>
               <td>
                 <a href="/itinventory/updateMonitor/{{ line.monitor2_id }}/{{ myrooms.id }}">
-                  {% if line.monitor2.serialnummer == None %}-{%else%}{{ line.monitor2.serialnummer}}{% endif%}
+                  {{ line.monitor2.serialnummer}}
                 </a>
               </td>
               <td><a href="/itinventory/changeMouse/{{ line.id }}">{{ line.maus }}</a></td>
