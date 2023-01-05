@@ -16,7 +16,7 @@ urlpatterns = [
     path('delplatz/<int:id>/<int:id_room>/', views.delplatz, name='delplatz'),
 
     path('updatePlatz/<int:id>', views.updatePlatz, name='updatePlatz'),
-    path('updatePlatz/updatePlatzRecord/<int:id>',views.updatePlatzRecord, name='updatePlatzRecord'),
+    path('updatePlatz/updatePlatzRecord/<int:id_platz>',views.updatePlatzRecord, name='updatePlatzRecord'),
 
     #update PC Data
     path('updatePC/<int:id>', views.updatePC, name='updatePC'),
@@ -75,4 +75,8 @@ urlpatterns = [
 
     #pc Management
     path('pcs/', views.pcs, name='pcs'),
+
+    # change Mouse/keyboard
+    path('changeMouse/<int:id_platz>', views.changeMouse, name='changeMouse'),
+    path('changeKeyboard/<int:id_platz>', views.changeKeyboard, name='changeKeyboard'),
 ]

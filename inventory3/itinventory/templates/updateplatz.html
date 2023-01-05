@@ -42,77 +42,27 @@
                           <td><input name="bezeichnung" type="text" value="{{ myplaetze.bezeichnung }}"></td>
                           
                           <td>
-                            <!-- <input name="pc" type="text" value="{{ myplaetze.pc_id }}"> -->
-                            <select name="pc" id="pc">
-                              <option value="{{ myplaetze.pc_id }}">{{ myplaetze.pc.modell }}</option>
-                              {% for line in mypcs %}
-                              <option value="{{line.id}}">{{line.modell}}</option>
-                              {% endfor %}
-                            </select>
-                          </td>
-                          <td>
-                            <!-- <input name="monitor1" type="text" value="{{ myplaetze.monitor1_id }}"> -->
-                            <select name="monitor1" id="monitor1">
-                              <option value="{{ myplaetze.monitor1_id }}">{{ myplaetze.monitor1.serialnummer }}</option>
-                              {% for line in mymonitors1 %}
-                              <option value="{{line.id}}">{{line.serialnummer}}</option>
-                              {% endfor %}
-                            </select>
-                          </td>
-                          <td>
-                            <!-- <input name="monitor2" type="text" value="{{ myplaetze.monitor2_id }}"> -->
-                            <select name="monitor2" id="monitor2">
-                              <option value="{{ myplaetze.monitor2_id }}">{{ myplaetze.monitor2.serialnummer }}</option>
-                              {% for line in mymonitors2 %}
-                              <option value="{{line.id}}">{{line.serialnummer}}</option>
-                              {% endfor %}
-                            </select>
-                          </td>
-                          <td>
-                            <!-- <input name="maus" type="text" value="{{ myplaetze.maus }}"> -->
-                            <select name="maus" id="maus">
-                              <option value="{{ myplaetze.maus }}">{{ myplaetze.maus }}</option>
-                              
-                              {% if myplaetze.maus == 'True' %}
-                                <option value="True">True</option>
-                              {% else %}
-                                <option value="False">False</option>
-                              {% endif %} 
-                            </select>
-                          </td>
-                          <td>
-                            <select name="tastator" id="tastator">
-                            <option value="{{ myplaetze.tastator }}">{{ myplaetze.tastatur }}</option>
+                            <input name="pc" type="text" value="{{ myplaetze.pc_id }}" readonly>
                             
-                            {% if myplaetze.maus == 'True' %}
-                              <option value="True">True</option>
-                            {% else %}
-                              <option value="False">False</option>
-                            {% endif %} 
-                          </select>
-                        </td>
+                          </td>
+                          <td>
+                            <input name="monitor1" type="text" value="{{ myplaetze.monitor1_id }}">
+                          </td>
+                          <td>
+                            <input name="monitor2" type="text" value="{{ myplaetze.monitor2_id }}">
+                          </td>
+                          <td>
+                            <input name="maus" type="text" value="{{ myplaetze.maus }}">
+                          </td>
+                          <td>
+                            <input name="tastatur" type="text" value="{{ myplaetze.tastaur }}">
+                          </td>
                           
                         
                           
                         </tr>
-                        <tr>
-                         <!-- <input type="submit" value="el PC" placeholder="Add PC" class="btn btn-primary">-->
-                          <td>
-                            <a href="/itinventory/addpc/{{ myplaetze.room_id }}" class="btn btn-primary">PC hinzufügen</a>
-                          </td>
-                          <td>
-                            <a href="/itinventory/addmonitor/{{ myplaetze.room_id }}" class="btn btn-primary">Monitor hinzufügen</a>
-                          </td>
-                        </tr>
-                        <tr>
-                         <!-- <input type="submit" value="Add PC" placeholder="Add PC" class="btn btn-primary">-->
-                          <td>
-                            <a href="/itinventory/delPc/{{ myplaetze.id }}" class="btn btn-danger">PC löschen</a>
-                          </td>
-                          <td>
-                            <a href="/itinventory/delmonitor/{{ myplaetze.id }}" class="btn btn-danger">Monitor löschen</a>
-                          </td>
-                        </tr>
+
+
                         <tr>
                           <td><input type="submit" value="Speichern" placeholder="Speichern" class="btn btn-primary"></td>
                           <input name="room" type="text" value="{{ myplaetze.room_id }}" class="invisible">

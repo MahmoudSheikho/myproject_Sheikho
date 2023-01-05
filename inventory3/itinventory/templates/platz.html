@@ -30,8 +30,8 @@
               <th>PC</th>
               <th>Monitor1</th>
               <th>Monitor2</th>
-              <th>Tastatur</th>
               <th>Maus</th>
+              <th>Tastaur</th>
               <th>Delete</th>
 
             </tr>
@@ -54,8 +54,8 @@
                   {% if line.monitor2.serialnummer == None %}-{%else%}{{ line.monitor2.serialnummer}}{% endif%}
                 </a>
               </td>
-              <td><a href="/itinventory/updatePlatz/{{ line.id }}">{{ line.maus }}</a></td>
-              <td><a href="/itinventory/updatePlatz/{{ line.id }}">{{ line.tastatur }}</a></td>
+              <td><a href="/itinventory/changeMouse/{{ line.id }}">{{ line.maus }}</a></td>
+              <td><a href="/itinventory/changeKeyboard/{{ line.id }}">{{ line.tastatur }}</a></td>
 
               <td>
                 <!-- Button trigger modal -->
